@@ -256,9 +256,11 @@ namespace Gestor
                 string tpItmCst = $"{estrutura.TpItmCst}{Global.Space20}";
                 var operacao = db.Operacoes.SingleOrDefault(o => o.CodigoOperacao == estrutura.Item);
 
-                if (operacao == null)
-                    DbLogger.Log(Reason.Error, $"FxEstrutura.TempMaq resultou em item de operação ({estrutura.Item}) inexistente");
-                else quociente = operacao.TaxaOcupacao;
+                //if (operacao == null)
+                //    DbLogger.Log(Reason.Error, $"FxEstrutura.TempMaq resultou em item de operação ({estrutura.Item}) inexistente");
+                //else quociente = operacao.TaxaOcupacao;
+
+                if (operacao != null) quociente = operacao.TaxaOcupacao;
 
                 result = (tpItmCst.Substring(0, 5) == "c-MOD") && (Math.Abs(quociente) > Global.Tolerance)
                     ? estrutura.QtEftvUntrCmpnt / quociente
