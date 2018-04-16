@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Gestor")]
-[assembly: AssemblyCopyright("Copyright ©  2017 Sergio Di Fiore")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Sergio Di Fiore")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

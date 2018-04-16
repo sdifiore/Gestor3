@@ -93,6 +93,7 @@ namespace Gestor.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Route("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,SetorId,Operadores,MoDireta,CodigoLiderApoio,MoDiretaLiderApoio,HorasModOperadores,HorasModTotal,CustoUnitario,RateioSetor20,RateioSetor40,RateioSetor50,RateioSetor60,SomaIndiretos,SomaDiretoIndireto,RateioCustoUnitario")] CustoCargoDireto custoCargoDireto)
         {
