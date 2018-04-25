@@ -29,7 +29,7 @@
         @using (Html.BeginForm("Incremento", "PlanejVendas", FormMethod.Post))
         {
             <p>
-                Inc. Global: @Html.TextBox("incremento", (float)ViewBag.incremento)
+                Inc. Global (%): @Html.TextBox("incremento", (float)ViewBag.incremento)
                 <input type="submit" value="Calcular" />
             </p>
         }
@@ -38,7 +38,7 @@
         @using (Html.BeginForm("DespExp", "PlanejVendas", FormMethod.Post))
         {
             <p>
-                Desp. Exp.: @Html.TextBox("DespExp", (float)ViewBag.despExp)
+                Desp. Exp. (%): @Html.TextBox("DespExp", (float)ViewBag.despExp)
                 <input type="submit" value="Calcular" />
             </p>
         }
