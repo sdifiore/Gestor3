@@ -34,7 +34,8 @@ namespace Gestor.Controllers
                     System.IO.File.Delete(path);
                 }
 
-                return RedirectToAction("Index", "Home");
+                ViewBag.Message = Global.AtualizacaoOk;
+                return View();
             }
             catch (Exception ex)
             {
@@ -53,7 +54,7 @@ namespace Gestor.Controllers
         }
 
         [HttpPost]
-        public ActionResult DespFixas(HttpPostedFileBase file)
+        public ViewResult DespFixas(HttpPostedFileBase file)
         {
             try
             {
@@ -65,7 +66,9 @@ namespace Gestor.Controllers
                     System.IO.File.Delete(path);
                 }
 
-                return RedirectToAction("Index", "Home");
+                ViewBag.Message = Global.AtualizacaoOk;
+                ViewBag.retorno = "DespFixas";
+                return View("UploadFile");
             }
             catch (Exception ex)
             {
@@ -96,8 +99,10 @@ namespace Gestor.Controllers
                     System.IO.File.Delete(path);
                 }
 
-                return RedirectToAction("Index", "Home");
-        }
+                ViewBag.Message = Global.AtualizacaoOk;
+                ViewBag.retorno = "FatHist";
+                return View("UploadFile");
+            }
             catch (Exception ex)
             {
                 DbLogger.Log(Reason.Error, $"Upload.FatHist: {ex.Message}");
