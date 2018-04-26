@@ -1,5 +1,6 @@
 ﻿using Gestor.Models;
 using System;
+using System.Linq;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
@@ -8,15 +9,12 @@ namespace Gestor.Controllers
 {
     public class UploadController : Controller
     {
-        // GET: Upload
-        public ViewResult Index()
-        {
-            return View();
-        }
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         [HttpGet]
         public ViewResult UploadFile()
         {
+            ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoCargos;
             ViewBag.retorno = "UploadFile";
             return View();
         }
@@ -32,14 +30,19 @@ namespace Gestor.Controllers
                     file.SaveAs(path);
                     Populate.CustosCargos(path);
                     System.IO.File.Delete(path);
+                    var memoria = db.Memorias.First();
+                    memoria.AtualizacaoCargos = DateTime.Now;
+                    db.SaveChanges();
                 }
 
+                ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoCargos;
                 ViewBag.Message = Global.AtualizacaoOk;
                 return View();
             }
             catch (Exception ex)
             {
                 DbLogger.Log(Reason.Error, $"Upload.UploadFile: {ex.Message}");
+                ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoCargos;
                 ViewBag.Message = "Ocorreu um erro. Tente novamente ou consulte a log do sistema.";
                 ViewBag.retorno = "UploadFile";
                 return View();
@@ -49,6 +52,7 @@ namespace Gestor.Controllers
         [HttpGet]
         public ViewResult DespFixas()
         {
+            ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoDespFixas;
             ViewBag.retorno = "DespFixas";
             return View("UploadFile");
         }
@@ -64,8 +68,12 @@ namespace Gestor.Controllers
                     file.SaveAs(path);
                     Populate.DespFixas(path);
                     System.IO.File.Delete(path);
+                    var memoria = db.Memorias.First();
+                    memoria.AtualizacaoDespFixas = DateTime.Now;
+                    db.SaveChanges();
                 }
 
+                ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoDespFixas;
                 ViewBag.Message = Global.AtualizacaoOk;
                 ViewBag.retorno = "DespFixas";
                 return View("UploadFile");
@@ -73,6 +81,7 @@ namespace Gestor.Controllers
             catch (Exception ex)
             {
                 DbLogger.Log(Reason.Error, $"Upload.DespFixas: {ex.Message}");
+                ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoDespFixas;
                 ViewBag.Message = "Ocorreu um erro. Tente novamente ou consulte a log do sistema.";
                 ViewBag.retorno = "DespFixas";
                 return View("UploadFile");
@@ -82,6 +91,7 @@ namespace Gestor.Controllers
         [HttpGet]
         public ViewResult FatHist()
         {
+            ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoFatHistorico;
             ViewBag.retorno = "FatHist";
             return View("UploadFile");
         }
@@ -97,8 +107,12 @@ namespace Gestor.Controllers
                     file.SaveAs(path);
                     Populate.FatHist(path);
                     System.IO.File.Delete(path);
+                    var memoria = db.Memorias.First();
+                    memoria.AtualizacaoFatHistorico = DateTime.Now;
+                    db.SaveChanges();
                 }
 
+                ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoFatHistorico;
                 ViewBag.Message = Global.AtualizacaoOk;
                 ViewBag.retorno = "FatHist";
                 return View("UploadFile");
@@ -106,6 +120,7 @@ namespace Gestor.Controllers
             catch (Exception ex)
             {
                 DbLogger.Log(Reason.Error, $"Upload.FatHist: {ex.Message}");
+                ViewBag.UltimaAtualizacao = db.Memorias.First().AtualizacaoFatHistorico;
                 ViewBag.Message = "Ocorreu um erro. Tente novamente ou consulte a log do sistema.";
                 ViewBag.retorno = "FatHist";
                 return View("UploadFile");

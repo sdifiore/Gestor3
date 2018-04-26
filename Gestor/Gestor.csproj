@@ -1185,6 +1185,10 @@
     <Compile Include="Migrations\201804051841373_AddPedidoNotaFiscalFieldToMemoriaDb.Designer.cs">
       <DependentUpon>201804051841373_AddPedidoNotaFiscalFieldToMemoriaDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804261302356_AtualizacaoFieldsToMemoriaTable.cs" />
+    <Compile Include="Migrations\201804261302356_AtualizacaoFieldsToMemoriaTable.Designer.cs">
+      <DependentUpon>201804261302356_AtualizacaoFieldsToMemoriaTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Aditivo.cs" />
     <Compile Include="Models\Aumdim.cs" />
     <Compile Include="Models\Carga.cs" />
@@ -3644,6 +3648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804051841373_AddPedidoNotaFiscalFieldToMemoriaDb.resx">
       <DependentUpon>201804051841373_AddPedidoNotaFiscalFieldToMemoriaDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261302356_AtualizacaoFieldsToMemoriaTable.resx">
+      <DependentUpon>201804261302356_AtualizacaoFieldsToMemoriaTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gestor.Models
 {
@@ -15,5 +16,11 @@ namespace Gestor.Models
 
         [StringLength(6)]
         public string PedidoNotaFiscal { get; set; }
+
+        public DateTime AtualizacaoCargos { get; set; }
+
+        public DateTime AtualizacaoDespFixas { get; set; }
+
+        public DateTime AtualizacaoFatHistorico { get; set; }
     }
 }
