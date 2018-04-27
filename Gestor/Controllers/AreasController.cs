@@ -108,10 +108,19 @@ namespace Gestor.Controllers
             return View(area);
         }
 
-        // POST: Areas/Delete/5
+        // POST: Estruturas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
+        {
+            Area area = db.Areas.Find(id);
+            return View("Erase", area);
+        }
+
+        // POST: Estruturas/Erase/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
         {
             Area area = db.Areas.Find(id);
             db.Areas.Remove(area);

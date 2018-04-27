@@ -131,14 +131,25 @@ namespace Gestor.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(aditivo);
         }
 
-        // POST: Aditivoes/Delete/5
+        // POST: Estruturas/Delete/5
+        [HttpPost, ActionName("Delete")]
         [Route("Delete")]
-        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Aditivo aditivo = db.Aditivos.Find(id);
+            return View("Erase", aditivo);
+        }
+
+        // POST: Estruturas/Erase/5
+        [HttpPost]
+        [Route("Erase")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
         {
             Aditivo aditivo = db.Aditivos.Find(id);
             db.Aditivos.Remove(aditivo);

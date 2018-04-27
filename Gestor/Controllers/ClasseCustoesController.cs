@@ -116,6 +116,15 @@ namespace Gestor
         public ActionResult DeleteConfirmed(int id)
         {
             ClasseCusto classeCusto = db.ClassesCusto.Find(id);
+            return View("Erase", classeCusto);
+        }
+
+        // POST: ClasseCustoes/Erase/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
+        {
+            ClasseCusto classeCusto = db.ClassesCusto.Find(id);
             db.ClassesCusto.Remove(classeCusto);
             db.SaveChanges();
             return RedirectToAction("Index");

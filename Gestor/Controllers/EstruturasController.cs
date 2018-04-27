@@ -174,10 +174,20 @@ namespace Gestor.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Estrutura estrutura = db.Estruturas.Find(id);
+            return View("Erase", estrutura);
+        }
+
+        // POST: Estruturas/Erase/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
+        {
+            Estrutura estrutura = db.Estruturas.Find(id);
             db.Estruturas.Remove(estrutura);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public ActionResult Search(int? page, string search)

@@ -128,9 +128,23 @@ namespace Gestor.Controllers
         }
 
         // POST: CustoCargoDiretoes/Delete/5
+        [Route("Delete")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
+        {
+            CustoCargoDireto custoCargoDireto = db.CustoCargoDiretos
+                .Include(c => c.Setor)
+                .SingleOrDefault(c => c.Id == id);
+
+            return View("Erase", custoCargoDireto);
+        }
+
+        // POST: CustoCargoDiretoes/Erase/5
+        [HttpPost]
+        [Route("Erase")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
         {
             CustoCargoDireto custoCargoDireto = db.CustoCargoDiretos.Find(id);
             db.CustoCargoDiretos.Remove(custoCargoDireto);

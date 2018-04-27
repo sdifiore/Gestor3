@@ -114,6 +114,15 @@ namespace Gestor.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CuboEstoque cuboEstoque = db.CubosEstoque.Find(id);
+            return View("Erase", cuboEstoque);
+        }
+
+        // POST: CuboEstoques/Erase/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
+        {
+            CuboEstoque cuboEstoque = db.CubosEstoque.Find(id);
             db.CubosEstoque.Remove(cuboEstoque);
             db.SaveChanges();
             return RedirectToAction("Index");

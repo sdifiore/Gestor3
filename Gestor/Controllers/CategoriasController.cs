@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -115,8 +116,33 @@ namespace Gestor.Models
         public ActionResult DeleteConfirmed(int id)
         {
             Categoria categoria = db.Categorias.Find(id);
-            db.Categorias.Remove(categoria);
-            db.SaveChanges();
+            return View("Erase", categoria);
+        }
+
+        // POST: Categorias/Erase/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
+        {
+            try
+            {
+                Categoria categoria = db.Categorias.Find(id);
+                db.Categorias.Remove(categoria);
+                db.SaveChanges();
+                
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                DbLogger.Log(Reason.Info, $"Tentativa de eliminar Categoria id {id} existindo PlanejProducao associado");
+                return Content("Não é possível eliminar pois existe um PlanejProducao associado a essa Categoria.");
+            }
+
+            catch (Exception ex)
+            {
+                DbLogger.Log(Reason.Error, $"Erro ao tentar eliminar Categoria Id {id}: {ex}");
+                return Content("Categoria não eliminada devido a erro. Tente novamente ou notifique suporte.");
+            }
+
             return RedirectToAction("Index");
         }
 

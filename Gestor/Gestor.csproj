@@ -2541,13 +2541,30 @@
     <Content Include="Views\FatHistorico\Pedido.cshtml" />
     <Content Include="Views\FatHistorico\NotaFiscal.cshtml" />
     <Content Include="Views\Estruturas\Search.cshtml" />
+    <Content Include="Views\Estruturas\Erase.cshtml" />
+    <Content Include="Views\Estruturas\Common.cshtml" />
+    <Content Include="Views\Aditivoes\Common.cshtml" />
+    <Content Include="Views\Aditivoes\Erase.cshtml" />
+    <Content Include="Views\Areas\Common.cshtml" />
+    <Content Include="Views\Areas\Erase.cshtml" />
+    <Content Include="Views\Cargas\Common.cshtml" />
+    <Content Include="Views\Cargas\Erase.cshtml" />
+    <Content Include="Views\Categorias\Common.cshtml" />
+    <Content Include="Views\Categorias\Erase.cshtml" />
+    <Content Include="Views\CategoriasCliente\Common.cshtml" />
+    <Content Include="Views\CategoriasCliente\Erase.cshtml" />
+    <Content Include="Views\ClasseCustoes\Common.cshtml" />
+    <Content Include="Views\ClasseCustoes\Erase.cshtml" />
+    <Content Include="Views\CuboEstoques\Common.cshtml" />
+    <Content Include="Views\CuboEstoques\Erase.cshtml" />
+    <Content Include="Views\CustoCargoDiretoes\Common.cshtml" />
+    <Content Include="Views\CustoCargoDiretoes\Erase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\EstruturasControllerNew\" />
     <Folder Include="Views\Migracao\" />
   </ItemGroup>
   <ItemGroup>

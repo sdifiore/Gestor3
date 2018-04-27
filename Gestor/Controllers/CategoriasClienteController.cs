@@ -109,10 +109,19 @@ namespace Gestor.Controllers
             return View(categoriaCliente);
         }
 
-        // POST: CategoriasCliente/Delete/5
+        // POST: Estruturas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
+        {
+            CategoriaCliente categoriaCliente = db.CategoriasCliente.Find(id);
+            return View("Erase", categoriaCliente);
+        }
+
+        // POST: Estruturas/Erase/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Erase(int id)
         {
             CategoriaCliente categoriaCliente = db.CategoriasCliente.Find(id);
             db.CategoriasCliente.Remove(categoriaCliente);
